@@ -83,6 +83,10 @@ def main(global_config, **settings):
     config.add_view(route_name='dev', renderer='chsdi:templates/index.pt')
     config.add_view(route_name='testi18n', renderer='chsdi:templates/testi18n.mako')
 
+    # Shortener
+    config.add_route('shorten', '/shorten.json')
+    config.add_route('shorten_redirect', '/shorten/{id}')
+
     # static view definitions
     config.add_static_view('static', 'chsdi:static')
     config.add_static_view('images', 'chsdi:static/images')
@@ -91,5 +95,5 @@ def main(global_config, **settings):
     config.add_static_view('/', 'chsdi:static/doc/build')
 
     # required to find code decorated by view_config
-    config.scan(ignore=['chsdi.tests', 'chsdi.models.bod', 'chsdi.models.vector'])
+    config.scan(ignore=['chsdi.tests', 'chsdi.models.bod', 'chsdi.models.vector', 'chsdi.scripts'])
     return config.make_wsgi_app()

@@ -1,22 +1,22 @@
 #-*- coding: utf-8 -*-
 
 import httplib2
-import urllib
 import json
-import urlparse
 import StringIO
 
 from pyramid.view import view_config
 from pyramid.httpexceptions import HTTPBadRequest
 from pyramid.response import Response
 
+from chsdi.lib.helpers import check_url, quoting
+
 
 @view_config(route_name='qrcodegenerator')
 def qrcode(request):
 
-    url = _check_url(
+    url = quoting(check_url(
         request.params.get('url')
-    )
+    ))
     url = _shorten_url(url)
     img = _make_qrcode_img(url)
     response = Response(img, content_type='image/png')
@@ -40,19 +40,6 @@ def _make_qrcode_img(url):
     except:
         raise HTTPBadRequest('An error occured during the qrcode generation')
     return output.getvalue()
-
-
-def _check_url(url):
-    if url is None:
-        raise HTTPBadRequest('The parameter url is missing from the request')
-    parsedUrl = urlparse.urlparse(url)
-    hostname = parsedUrl.hostname
-    if hostname is None:
-        raise HTTPBadRequest('Could not determine the hostname')
-    domain = ".".join(hostname.split(".")[-2:])
-    if all(('admin.ch' not in domain, 'swisstopo.ch' not in domain, 'bgdi.ch' not in domain)):
-        raise HTTPBadRequest('Shortener can only be used for admin.ch, swisstopo.ch and bgdi.ch domains')
-    return urllib.quote(url)
 
 
 def _shorten_url(url):
