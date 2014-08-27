@@ -14,7 +14,8 @@ def _add_item(url):
     table = get_table()
 
     # Create a new short url if url not in DB
-    url_short = '%x' % int(time.time() * 100)
+    t = int(time.time() * 1000) - 1000000000000
+    url_short = '%x' % t
     try:
         new_url_short = table.new_item(
             hash_key=url_short,
@@ -24,7 +25,6 @@ def _add_item(url):
             })
         new_url_short.put()
     except Exception as e:
-        print e
         raise exc.HTTPBadRequest('Error during put item %s' % e)
     return url_short
 
