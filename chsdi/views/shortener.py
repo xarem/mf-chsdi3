@@ -6,27 +6,40 @@ import pyramid.httpexceptions as exc
 from urlparse import urlparse
 import time
 
+from boto.dynamodb2.table import Table
 from chsdi.models.clientdata_dynamodb import get_table
 from chsdi.lib.helpers import check_url
 
 
-def _add_item(url):
-    table = get_table()
+def _add_item(table, url):
+    url_short = _get_url_short(table, url)
+    if url_short is None:
+        # Create a new short url if url not in DB
+        # Magic number relates to the initial epoch
+        t = int(time.time() * 1000) - 1000000000000
+        url_short = '%x' % t
+        try:
+            table.put_item(
+                data={
+                    'url_short': url_short,
+                    'url': url,
+                    'timestamp': time.strftime('%Y-%m-%d %X', time.localtime())
+                }
+            )
+        except Exception as e:
+            raise exc.HTTPBadRequest('Error during put item %s' % e)
+        return url_short
+    else:
+        return url_short
 
-    # Create a new short url if url not in DB
-    t = int(time.time() * 1000) - 1000000000000
-    url_short = '%x' % t
+
+def _get_url_short(table, url):
+    row = table.query_2(index='UrlIndex', url__eq=url)
     try:
-        new_url_short = table.new_item(
-            hash_key=url_short,
-            attrs={
-                'url': url,
-                'timestamp': time.strftime('%Y-%m-%d %X', time.localtime())
-            })
-        new_url_short.put()
-    except Exception as e:
-        raise exc.HTTPBadRequest('Error during put item %s' % e)
-    return url_short
+        item = next(row)
+        return item['url_short']
+    except:
+        return None
 
 
 @view_config(route_name='shorten', renderer='jsonp')
@@ -34,7 +47,13 @@ def shortener(request):
     url = check_url(
         request.params.get('url')
     )
-    url_short = _add_item(url)
+    # DynamoDB v2 high-level abstraction
+    try:
+        table = Table('short_urls')
+    except Exception as e:
+        raise exc.HTTPBadRequest('Error during connection %s' % e)
+
+    url_short = _add_item(table, url)
     return {
         'shortUrl': ''.join((
                             's.geo.admin.ch/',

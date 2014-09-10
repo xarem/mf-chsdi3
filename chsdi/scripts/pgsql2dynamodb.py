@@ -10,10 +10,10 @@ from datetime import date
 from optparse import OptionParser
 from sqlalchemy import create_engine
 from sqlalchemy.orm import scoped_session, sessionmaker
+from boto.dynamodb2.table import Table
 from boto.exception import DynamoDBResponseError
 
 from chsdi.models.clientdata import ClientData
-from chsdi.models.clientdata_dynamodb import get_table
 
 
 if __name__ == '__main__':
@@ -102,7 +102,7 @@ if __name__ == '__main__':
 
     count = 0
     t0 = time.time()
-    table = get_table()
+    table = Table('short_urls')
     for q in query.yield_per(1000):
         # Parse url and clean permalink parameters
         url_parsed = parse_url_params(q.url)
@@ -111,13 +111,13 @@ if __name__ == '__main__':
             params = drop_re2_params(url_parsed)
             qs = build_qs_from_params(params)
             try:
-                new_short_url = table.new_item(
-                    hash_key=q.url_short,
-                    attrs={
+                table.put_item(
+                    data={
+                        'url_short': q.url_short,
                         'url': host + '?' + qs,
                         'timestamp': str(q.bgdi_created)
-                    })
-                new_short_url.put()
+                    }
+                )
                 count += 1
             except DynamoDBResponseError as e:
                 # print in log file

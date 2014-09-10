@@ -5,18 +5,35 @@ import pyramid.httpexceptions as exc
 import boto
 
 '''
-Create the table described hereunder.
+CREATE a table
+--------------
+
+import time
+from boto.dynamodb2.table import Table
+from boto.dynamodb2.fields import HashKey, GlobalKeysOnlyIndex
+
+table = Table.create(short_urls, schema=[
+    HashKey('url_short'),
+], throughput={
+    'read': 15,
+    'write': 15,
+},
+global_indexes=[
+    GlobalKeysOnlyIndex('UrlIndex', parts=[
+        HashKey('url')
+    ], throughput={
+        'read': 10,
+        'write': 10
+    }),
+])
+time.sleep(30)
+
+DROP a table
+------------
 
 import boto
 conn=boto.connect_dynamodb()
-schema=conn.create_schema(hash_key_name='url_short',hash_key_proto_value='S')
-table=conn.create_table(name='shorturls', schema=schema, read_units=25, write_units=25)
-
-Drop table.
-
-import boto
-conn=boto.connect_dynamodb()
-table=conn.get_table('shorturls')
+table=conn.get_table('short_urls')
 table.delete()
 
 '''
@@ -29,6 +46,6 @@ def get_table():
     # url_short is the pkey
     try:
         conn = boto.connect_dynamodb()
-        return conn.get_table('shorturls')
+        return conn.get_table('short_urls')
     except Exception as e:
         raise exc.HTTPBadRequest('Error during connection %s' % e)
