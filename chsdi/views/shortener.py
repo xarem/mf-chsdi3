@@ -47,13 +47,19 @@ def shortener(request):
     url = check_url(
         request.params.get('url')
     )
-    # DynamoDB v2 high-level abstraction
-    try:
-        table = Table('short_urls')
-    except Exception as e:
-        raise exc.HTTPBadRequest('Error during connection %s' % e)
+    if len(url) >= 2046:
+        # we only accept URL shorter or equal to 2046 characters
+        # Index restriction in DynamoDB
+        url_short = 'toolong'
+    else:
+        # DynamoDB v2 high-level abstraction
+        try:
+            table = Table('short_urls')
+        except Exception as e:
+            raise exc.HTTPBadRequest('Error during connection %s' % e)
 
-    url_short = _add_item(table, url)
+        url_short = _add_item(table, url)
+
     return {
         'shortUrl': ''.join((
                             's.geo.admin.ch/',
@@ -68,6 +74,9 @@ def shorten_redirect(request):
     if url_short is None:
         raise exc.HTTPBadRequest('Please provide an id')
     table = get_table()
+    if url_short == 'toolong':
+        raise exc.HTTPFound(location='http://map.geo.admin.ch')
+
     try:
         url_short = table.get_item(url_short)
         url = url_short.get('url')

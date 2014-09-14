@@ -110,19 +110,21 @@ if __name__ == '__main__':
             host = q.url.split('?')[0]
             params = drop_re2_params(url_parsed)
             qs = build_qs_from_params(params)
-            try:
-                table.put_item(
-                    data={
-                        'url_short': q.url_short,
-                        'url': host + '?' + qs,
-                        'timestamp': str(q.bgdi_created)
-                    }
-                )
-                count += 1
-            except DynamoDBResponseError as e:
-                # print in log file
-                f.write('An DynamoDB error occured while inserting the short URL %s\n' % q.url_short)
-                f.write('Permalink is %s\n\n' % q.url)
+            # Limit of 2046 characters on url indexes
+            if len(host + '?' + qs) <= 2046:
+                try:
+                    table.put_item(
+                        data={
+                            'url_short': q.url_short,
+                            'url': host + '?' + qs,
+                            'timestamp': str(q.bgdi_created)
+                        }
+                    )
+                    count += 1
+                except DynamoDBResponseError as e:
+                    # print in log file
+                    f.write('An DynamoDB error occured while inserting the short URL %s\n' % q.url_short)
+                    f.write('Permalink is %s\n\n' % q.url)
         else:
             # Dropped URL
             f.write('Probably an old techincal address for the short URL %s\n' % q.url_short)
