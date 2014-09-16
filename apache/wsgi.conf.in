@@ -8,6 +8,7 @@
 # Location block by passing process-group and application-group
 # options to the WSGIScriptAlias directive.
 #
+ServerAlias s.geo.admin.ch
 
 RewriteEngine on
 ExpiresActive on
@@ -70,6 +71,10 @@ RewriteRule ^${apache_entry_path}/1.0.0/WMTSCapabilities\.xml$ ${apache_entry_pa
 # Frozen Capabilities, for swissmaponline 
 RewriteCond %{QUERY_STRING} lang=(de|fr|it|en) [NC] 
 RewriteRule ^${apache_entry_path}/1.0.0/WMTSCapabilities_v([0-9]{8})\.xml$ ${buildout:directory}/chsdi/static/capabilities/$1/WMTSCapabilities.%1.xml [NC,QSA,L]
+
+# Shorten service
+RewriteCond %{HTTP_HOST} ^s.geo.admin.ch$
+RewriteRule ^${apache_entry_path}/(.*)$ ${apache_entry_path}/shorten/$1 [PT]
 
 # Proxy pass for geodesy services
 RewriteRule ^${apache_entry_path}/reframe/lv03tolv95(.*)$ http://tc-geodesy.bgdi.admin.ch/reframe/lv03tolv95$1 [P]
