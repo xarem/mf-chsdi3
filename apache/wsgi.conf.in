@@ -8,7 +8,6 @@
 # Location block by passing process-group and application-group
 # options to the WSGIScriptAlias directive.
 #
-ServerAlias s.geo.admin.ch
 
 RewriteEngine on
 ExpiresActive on
