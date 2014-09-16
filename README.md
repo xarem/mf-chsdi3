@@ -44,6 +44,8 @@ Open .boto and Add (`/etc/boto.cfg` for main)
     aws_access_key_id = {keyid}
     aws_secret_access_key = {accesskey}
 
+[Nagios Check](https://dashboard.prod.bgdi.ch/cgi-bin/nagios3/extinfo.cgi?type=2&host=ip-10-220-4-46.eu-west-1.compute.internal&service=DynamoDB+backup)
+
 Bootstrap your build environment:
 
     python bootstrap.py --version 1.5.2 --distribute --download-base http://pypi.camptocamp.net/distribute-0.6.22_fix-issue-227/ --setup-source http://pypi.camptocamp.net/distribute-0.6.22_fix-issue-227/distribute_setup.py
