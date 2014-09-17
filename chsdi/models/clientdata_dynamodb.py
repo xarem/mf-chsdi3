@@ -15,15 +15,15 @@ from boto.dynamodb2.fields import HashKey, GlobalKeysOnlyIndex
 table = Table.create(short_urls, schema=[
     HashKey('url_short'),
 ], throughput={
-    'read': 15,
-    'write': 15,
+    'read': 18,
+    'write': 18,
 },
 global_indexes=[
     GlobalKeysOnlyIndex('UrlIndex', parts=[
         HashKey('url')
     ], throughput={
-        'read': 10,
-        'write': 10
+        'read': 18,
+        'write': 18
     }),
 ])
 time.sleep(30)
