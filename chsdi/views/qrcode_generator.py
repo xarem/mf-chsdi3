@@ -8,7 +8,7 @@ from pyramid.view import view_config
 from pyramid.httpexceptions import HTTPBadRequest
 from pyramid.response import Response
 
-from chsdi.lib.helpers import check_url, quoting
+from chsdi.lib.helpers import check_url, make_api_url, quoting
 
 
 @view_config(route_name='qrcodegenerator')
@@ -17,7 +17,7 @@ def qrcode(request):
     url = quoting(check_url(
         request.params.get('url')
     ))
-    url = _shorten_url(url)
+    url = _shorten_url(request, url)
     img = _make_qrcode_img(url)
     response = Response(img, content_type='image/png')
     return response
@@ -42,11 +42,11 @@ def _make_qrcode_img(url):
     return output.getvalue()
 
 
-def _shorten_url(url):
-    API2_SHORTEN_URL = 'http://api.geo.admin.ch/shorten.json?url=%s'
+def _shorten_url(request, url):
+    API3_SHORTEN_URL = make_api_url(request) + '/shorten.json?url=%s'
     try:
         h = httplib2.Http()
-        resp, content = h.request(API2_SHORTEN_URL % url, 'GET')
+        resp, content = h.request(API3_SHORTEN_URL % url, 'GET')
         resp = json.loads(content)
         url = resp['shorturl']
         return url

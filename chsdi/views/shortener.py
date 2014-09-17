@@ -8,7 +8,7 @@ import time
 
 from boto.dynamodb2.table import Table
 from chsdi.models.clientdata_dynamodb import get_table
-from chsdi.lib.helpers import check_url
+from chsdi.lib.helpers import check_url, make_api_url
 
 
 def _add_item(table, url):
@@ -60,11 +60,14 @@ def shortener(request):
 
         url_short = _add_item(table, url)
 
+    # Use env specific URLs
+    if request.host not in ('api.geo.admin.ch', 'api3.geo.admin.ch'):
+        host_url = make_api_url(request) + '/shorten/'
+    else:
+        host_url = ''.join((request.scheme, '://s.geo.admin.ch/'))
+
     return {
-        'shorturl': ''.join((
-                            's.geo.admin.ch/',
-                            url_short
-                            ))
+        'shorturl': host_url + url_short
     }
 
 
