@@ -61,7 +61,7 @@ def shortener(request):
         url_short = _add_item(table, url)
 
     return {
-        'shortUrl': ''.join((
+        'shorturl': ''.join((
                             's.geo.admin.ch/',
                             url_short
                             ))
