@@ -31,7 +31,7 @@ if __name__ == '__main__':
         are dropped automatically
         '''
         # Drop urls containing the old techincal addresses
-        if '.bgdi.admin.ch' in url:
+        if '.bgdi.admin.ch' in url and 'tc-geodesy.bgdi.admin.ch' not in url:
             return None
         return dict(urlparse.parse_qsl(
             urlparse.urlparse(url).query
@@ -118,7 +118,8 @@ if __name__ == '__main__':
                             'url_short': q.url_short,
                             'url': host + '?' + qs,
                             'timestamp': str(q.bgdi_created)
-                        }
+                        },
+                        overwrite=True
                     )
                     count += 1
                 except DynamoDBResponseError as e:
