@@ -380,7 +380,7 @@ class Topics(Base):
 
 class Catalog(Base):
     __dbname__ = 'bod'
-    __tablename__ = 'view_catalog'
+    __tablename__ = 'view_catalog_import'
     __table_args__ = ({'schema': 're3', 'autoload': False})
     id = Column('bgdi_id', Integer, primary_key=True)
     parentId = Column('parent_id', Integer)
