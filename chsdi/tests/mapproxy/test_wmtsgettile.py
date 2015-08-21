@@ -16,6 +16,15 @@ WMTS_URLS = [
     'wmts9.geo.admin.ch'
 ]
 
+WAF_WMTS_URLS = [
+    'wmts0.int.bgdi.ch',
+    'wmts1.int.bgdi.ch',
+    'wmts2.int.bgdi.ch',
+    'wmts3.int.bgdi.ch',
+    'wmts4.int.bgdi.ch'
+]
+
+
 MAPPROXY_URLS = [
     'wmts10.geo.admin.ch',
     'wmts11.geo.admin.ch',
@@ -24,9 +33,18 @@ MAPPROXY_URLS = [
     'wmts14.geo.admin.ch',
 ]
 
+WAF_MAPPROXY_URLS = [
+    'wmts10.int.bgdi.ch',
+    'wmts11.int.bgdi.ch',
+    'wmts12.int.bgdi.ch',
+    'wmts13.int.bgdi.ch',
+    'wmts14.int.bgdi.ch',
+]
 
+#def rotateUrl(url):
+#    return url.replace(WMTS_URLS[0], WMTS_URLS[random.randint(0, len(WMTS_URLS) - 1)]).replace(MAPPROXY_URLS[0], MAPPROXY_URLS[random.randint(0, len(MAPPROXY_URLS) - 1)])
 def rotateUrl(url):
-    return url.replace(WMTS_URLS[0], WMTS_URLS[random.randint(0, len(WMTS_URLS) - 1)]).replace(MAPPROXY_URLS[0], MAPPROXY_URLS[random.randint(0, len(MAPPROXY_URLS) - 1)])
+    return url.replace(WAF_WMTS_URLS[0], WAF_WMTS_URLS[random.randint(0, len(WAF_WMTS_URLS) - 1)]).replace(WAF_MAPPROXY_URLS[0], WAF_MAPPROXY_URLS[random.randint(0, len(WAF_MAPPROXY_URLS) - 1)])
 
 HEADER_RESULTS = [{
     # NOTE Varnish transforms all non 200 status code into 204 (even 404)!
