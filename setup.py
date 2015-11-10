@@ -22,7 +22,6 @@ requires = [
     'geojson',
     'shapely',
     'Babel',
-    'httplib2',
     'nose',
     'coverage',
     'PyYAML',

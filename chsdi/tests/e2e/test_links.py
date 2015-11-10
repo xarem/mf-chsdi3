@@ -13,9 +13,9 @@ class TestLinks(TestsBase):
         }
         for i in range(23):
             response = self.testapp.get('/rest/services/ech/MapServer/ch.kantone.cadastralwebmap-farbe/%d/htmlPopup' % i, status=200)
-
             soup = response.html
+
             for a in soup.findAll('a'):
                 link = a.get('href')
                 r = requests.get(link, timeout=10, headers=headers)
-                self.assertTrue(r.status_code == 200, link)
+                self.assertEqual(r.status_code, 200, link)

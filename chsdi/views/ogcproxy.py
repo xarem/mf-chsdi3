@@ -1,8 +1,7 @@
 # -*- coding: utf-8 -*-
 
-import re
+import requests
 from urlparse import urlparse
-from httplib2 import Http
 
 from pyramid.view import view_config
 
@@ -12,7 +11,6 @@ from chsdi.lib.decorators import requires_authorization
 
 
 from StringIO import StringIO
-from urllib import urlopen
 from zipfile import ZipFile
 
 
@@ -32,57 +30,54 @@ class OgcProxy:
     @view_config(route_name='ogcproxy')
     def ogcproxy(self):
 
-        url = self.request.params.get("url")
+        url = self.request.params.get('url')
         if url is None:
-            return HTTPBadRequest()
+            return HTTPBadRequest('No url parameter was found')
 
-        # check for full url
+        # Check for full url
         parsed_url = urlparse(url)
-        if not parsed_url.netloc or parsed_url.scheme not in ("http", "https"):
+        if not parsed_url.netloc or parsed_url.scheme not in ('http', 'https'):
             raise HTTPBadRequest()
 
-        # forward request to target (without Host Header)
-        http = Http(disable_ssl_certificate_validation=True)
+        # Forward request to target (without Host Header)
         h = dict(self.request.headers)
-        h.pop("Host", h)
+        h.pop('Host', h)
         try:
-            resp, content = http.request(url, method=self.request.method,
-                                         body=self.request.body, headers=h)
-        except:
-            raise HTTPBadGateway()
+            resp = requests.request(
+                self.request.method,
+                url,
+                headers=h,
+                data=self.request.body
+            )
+        except Exception, e:
+            raise HTTPBadGateway(e)
 
+        ct = resp.headers.get('content-type')
         #  All content types are allowed
-        if "content-type" in resp:
-            ct = resp["content-type"]
-            if resp["content-type"] == "application/vnd.google-earth.kmz":
-                zipfile = None
+        if ct:
+            if ct == 'application/vnd.google-earth.kmz':
                 try:
-                    zipurl = urlopen(url)
-                    zipfile = ZipFile(StringIO(zipurl.read()))
-                    content = ''
-                    for line in zipfile.open(zipfile.namelist()[0]).readlines():
-                        content = content + line
+                    with ZipFile(StringIO(resp.content)) as zipfile:
+                        content = zipfile.extractall()
                     ct = 'application/vnd.google-earth.kml+xml'
                 except:
                     raise HTTPBadGateway()
-                finally:
-                    if zipfile:
-                        zipurl.close()
+            else:
+                content = resp.content
         else:
             raise HTTPNotAcceptable()
 
-        if content.find('encoding=') > 0:
-            m = re.search("encoding=\"(.*?)\\\"", content)
-            doc_encoding = m.group(1)
+        if resp.encoding:
+            doc_encoding = resp.encoding
             if doc_encoding.lower() != DEFAULT_ENCODING:
                 try:
-                    data = content.decode(doc_encoding, "replace")
+                    data = content.decode(doc_encoding, 'replace')
                 except Exception:
-                    raise HTTPNotAcceptable("Cannot decode requested content from advertized encoding: %s into unicode." % doc_encoding)
+                    raise HTTPNotAcceptable('Cannot decode requested content from advertized encoding: %s into unicode.' % doc_encoding)
                 content = data.encode(DEFAULT_ENCODING)
                 content = content.replace(doc_encoding, DEFAULT_ENCODING)
 
-        response = Response(content, status=resp.status,
-                            headers={"Content-Type": ct})
+        response = Response(content, status=resp.status_code,
+                            headers={'Content-Type': ct})
 
         return response

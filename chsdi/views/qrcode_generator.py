@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 
-import httplib2
-import json
+import requests
 import StringIO
 
 from pyramid.view import view_config
@@ -45,9 +44,8 @@ def _make_qrcode_img(url):
 def _shorten_url(request, url):
     API3_SHORTEN_URL = make_api_url(request) + '/shorten.json?url=%s'
     try:
-        h = httplib2.Http()
-        resp, content = h.request(API3_SHORTEN_URL % url, 'GET')
-        resp = json.loads(content)
+        resp = requests.get(API3_SHORTEN_URL % url)
+        resp = resp.json()
         url = resp['shorturl']
         return url
     except:

@@ -1,9 +1,7 @@
 # -*- coding: utf-8 -*-
 
-
+import requests
 import os.path
-import traceback
-import sys
 import urllib
 import json
 import re
@@ -15,7 +13,6 @@ import random
 from urlparse import urlparse, parse_qs, urlsplit, urlunparse
 from urllib import urlencode, quote_plus, unquote_plus
 
-from httplib2 import Http
 from collections import OrderedDict
 
 from PyPDF2 import PdfFileMerger
@@ -41,14 +38,13 @@ def _zeitreihen(d, api_url):
 
     timestamps = []
 
-    http = Http(disable_ssl_certificate_validation=True)
     params = urllib.urlencode(d)
     url = 'http:' + api_url + '/rest/services/ech/MapServer/ch.swisstopo.zeitreihen/releases?%s' % params
 
     try:
-        resp, content = http.request(url)
-        if int(resp.status) == 200:
-            timestamps = json.loads(content)['results']
+        resp = requests.get(url, verify=False)
+        if resp.status_code == 200:
+            timestamps = resp.json()['results']
     except:
         return timestamps
 
@@ -111,7 +107,7 @@ def _get_timestamps(spec, api_url):
 
                 log.debug('[_get_timestamps] Zeitreichen %s', timestamps)
             except Exception as e:
-                log.debug(str(e))
+                log.debug(str(e), exc_info=True)
                 timestamps = lyr['timestamps'] if 'timestamps' in lyr.keys() else None
         else:
             timestamps = lyr['timestamps'] if 'timestamps' in lyr.keys() else None
@@ -165,14 +161,12 @@ def _qrcodeurlunparse(url_tuple):
 def _shorten(url, api_url='http://api3.geo.admin.ch'):
     ''' Shorten a possibly long url '''
 
-    http = Http(disable_ssl_certificate_validation=True)
-
     shorten_url = api_url + '/shorten.json?url=%s' % quote_plus(url)
 
     try:
-        resp, content = http.request(shorten_url)
-        if int(resp.status) == 200:
-            shorturl = json.loads(content)['shorturl']
+        resp = requests.get(shorten_url, verify=False)
+        if resp.code_status == 200:
+            shorturl = resp.json()['shorturl']
             return shorturl
     except:
         return url
@@ -202,37 +196,35 @@ def worker(job):
         except:
             continue
 
-    log.debug('spec: %s', json.dumps(tmp_spec))
+    tmp_spec_json = json.dumps(tmp_spec)
+    log.debug('spec: %s' % tmp_spec_json, exc_info=True)
 
     # Before launching print request, check if process is canceled
     if os.path.isfile(cancelfile):
         return (timestamp, None)
 
     h = {'Referer': headers.get('Referer')}
-    http = Http(disable_ssl_certificate_validation=True)
-    resp, content = http.request(url, method='POST',
-                                 body=json.dumps(tmp_spec), headers=h)
 
-    if int(resp.status) == 200:
-    # GetURL '141028163227.pdf.printout', file 'mapfish-print141028163227.pdf.printout'
-    # We only get the pdf name and rely on the fact that they are stored on Zadara
+    resp = requests.post(url, verify=False, headers=h, data=tmp_spec_json)
+
+    if resp.status_code == 200:
+        content = resp.content
+        # GetURL '141028163227.pdf.printout', file 'mapfish-print141028163227.pdf.printout'
+        # We only get the pdf name and rely on the fact that they are stored on Zadara
         try:
             pdf_url = json.loads(content)['getURL']
-            log.debug('[Worker] pdf_url: %s', pdf_url)
+            log.debug('[Worker] pdf_url: %s' % pdf_url, exc_info=True)
             filename = os.path.basename(urlsplit(pdf_url).path)
             localname = os.path.join(print_temp_dir, MAPFISH_FILE_PREFIX + filename)
         except:
-            log.debug('[Worker] Failed timestamp: %s', timestamp)
-            exc_type, exc_value, exc_traceback = sys.exc_info()
-            log.debug("*** Traceback:/n" + traceback.print_tb(exc_traceback, limit=1, file=sys.stdout))
-            log.debug("*** Exception:/n" + traceback.print_exception(exc_type, exc_value, exc_traceback, limit=2, file=sys.stdout))
-
+            log.debug('[Worker] Failed timestamp: %s' % timestamp, exc_info=True)
             return (timestamp, None)
+
         _increment_info(lock, infofile)
         return (timestamp, localname)
     else:
-        log.debug('[Worker] Failed get/generate PDF for: %s. Error: %s', timestamp, resp.status)
-        log.debug('[Worker] %s', content)
+        log.error('[Worker] Failed get/generate PDF for: %s. Error: %d' % (timestamp, resp.status_code), exc_info=True)
+        log.error('[Worker] %s' % content, exc_info=True)
         return (timestamp, None)
 
 
@@ -286,7 +278,7 @@ def create_and_merge(info):
             log.info('[_merge_pdfs] Writing file.')
             out = open(filename, 'wb')
             merger.write(out)
-            log.info('[_merge_pdfs] Merged PDF written to: %s', filename)
+            log.info('[_merge_pdfs] Merged PDF written to: %s' % filename)
         except:
             return False
 
@@ -308,7 +300,7 @@ def create_and_merge(info):
     if _isMultiPage(spec):
         all_timestamps = _get_timestamps(spec, api_url)
         log.debug('[print_create] Going multipages')
-        log.debug('[print_create] Timestamps to process: %s', all_timestamps.keys())
+        log.debug('[print_create] Timestamps to process: %s' % ','.join(all_timestamps.keys()))
 
     if len(all_timestamps) < 1:
         job = (0, url, headers, None, [], spec, print_temp_dir)
@@ -346,14 +338,14 @@ def create_and_merge(info):
 
                     tmp_spec['qrcodeurl'] = time_updated_qrcodeurl
                     tmp_spec['pages'][0]['shortLink'] = shortlink
-                    log.debug('[print_create] QRcodeURL: %s', time_updated_qrcodeurl)
-                    log.debug('[print_create] shortLink: %s', shortlink)
+                    log.debug('[print_create] QRcodeURL: %s' % time_updated_qrcodeurl)
+                    log.debug('[print_create] shortLink: %s' % shortlink)
 
             if 'legends' in tmp_spec.keys() and ts != last_timestamp:
                 del tmp_spec['legends']
                 tmp_spec['enableLegends'] = False
 
-            log.debug('[print_create] Processing timestamp: %s', ts)
+            log.debug('[print_create] Processing timestamp: %s' % ts)
 
             job = (idx, url, headers, ts, lyrs, tmp_spec, print_temp_dir, infofile, cancelfile, lock)
 
@@ -375,10 +367,7 @@ def create_and_merge(info):
                 if p.exitcode is None:
                     p.terminate()
                 del pool._pool[i]
-            log.error('Error while generating the partial PDF: %s', e)
-            exc_type, exc_value, exc_traceback = sys.exc_info()
-            log.debug("*** Traceback:/n" + traceback.print_tb(exc_traceback, limit=1, file=sys.stdout))
-            log.debug("*** Exception:/n" + traceback.print_exception(exc_type, exc_value, exc_traceback, limit=2, file=sys.stdout))
+            log.error('Error while generating the partial PDF: %s' % e, exc_info=True)
             return 1
     else:
         pdfs = []
@@ -393,7 +382,7 @@ def create_and_merge(info):
 
     log.debug('pdfs %s', pdfs)
     if len([i for i, v in enumerate(pdfs) if v[1] is None]) > 0:
-        log.error('One or more partial PDF is missing. Cannot merge PDF')
+        log.error('One or more partial PDF is missing. Cannot merge PDF', exc_info=True)
         return 2
 
     if _merge_pdfs(pdfs, infofile) is False:
@@ -404,7 +393,7 @@ def create_and_merge(info):
     with open(infofile, 'w+') as outfile:
         json.dump({'status': 'done', 'getURL': pdf_download_url}, outfile)
 
-    log.info('[create_pdf] PDF ready to download: %s', pdf_download_url)
+    log.info('[create_pdf] PDF ready to download: %s' % pdf_download_url)
 
     return 0
 
@@ -486,10 +475,7 @@ class PrintMulti(object):
         try:
             spec = json.loads(jsonstring, encoding=self.request.charset)
         except:
-            log.debug('JSON content could not be parsed')
-            exc_type, exc_value, exc_traceback = sys.exc_info()
-            log.debug("*** Traceback:/n" + traceback.print_tb(exc_traceback, limit=1, file=sys.stdout))
-            log.debug("*** Exception:/n" + traceback.print_exception(exc_type, exc_value, exc_traceback, limit=2, file=sys.stdout))
+            log.error('JSON content could not be parsed', exc_info=True)
             raise HTTPBadRequest('JSON content could not be parsed')
 
         print_temp_dir = self.request.registry.settings['print_temp_dir']
