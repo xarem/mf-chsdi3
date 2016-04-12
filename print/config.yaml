@@ -1352,7 +1352,7 @@ layouts:
 #---------------------------------------
 # Print on demand (small)
 #---------------------------------------
-  5 Print On Demand (small):
+  5 My Swiss Map (50x76cm):
     mainPage:
       rotation: true
       pageSize: 1303 2494
@@ -1367,7 +1367,7 @@ layouts:
 #---------------------------------------
 # Print on demand (big)
 #---------------------------------------
-  6 Print On Demand (big):
+  6 My Swiss Map (69x98cm):
     mainPage:
       rotation: true
       pageSize: 1984 3118
