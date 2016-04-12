@@ -16,7 +16,8 @@ MODWSGI_USER := www-data
 NO_TESTS ?= withtests
 NODE_DIRECTORY := node_modules
 PRINT_INPUT := *.yaml *.png WEB-INF
-PRINT_OUTPUT_BASE := /srv/tomcat/tomcat1/webapps/print-chsdi3-$(APACHE_BASE_PATH)
+PRINT_WAR := print-chsdi3-$(APACHE_BASE_PATH)
+PRINT_OUTPUT_BASE := /srv/tomcat/tomcat1/webapps/$(PRINT_WAR)
 PRINT_OUTPUT := $(PRINT_OUTPUT_BASE).war
 PRINT_TEMP_DIR := /var/cache/print
 PYTHON_FILES := $(shell find chsdi/* -path chsdi/static -prune -o -type f -name "*.py" -print)
@@ -243,10 +244,10 @@ printwar: printconfig print/WEB-INF/web.xml.in
 	cp -f ${BASEWAR} temp_$(VERSION)/print-chsdi3-$(APACHE_BASE_PATH).war && \
 	cp -fr ${PRINT_INPUT} temp_$(VERSION)/ && \
 	cd temp_$(VERSION) && \
-	jar uf print-chsdi3-$(APACHE_BASE_PATH).war ${PRINT_INPUT} && \
+	jar uf $(PRINT_WAR).war ${PRINT_INPUT} && \
 	echo "${GREEN}Print war creation was successful.${RESET}" && \
-	rm -rf $(PRINT_OUTPUT) $(PRINT_OUTPUT_BASE) && \
-	cp -f print-chsdi3-$(APACHE_BASE_PATH).war $(PRINT_OUTPUT) && chmod 666 $(PRINT_OUTPUT) && cd .. && \
+	rm  -f $(PRINT_OUTPUT_BASE) && \
+	cp -f $(PRINT_WAR).war $(PRINT_OUTPUT) && chmod 666 $(PRINT_OUTPUT) && cd .. && \
 	echo "${GREEN}Removing temp directory${RESET}" && \
 	rm -rf temp_$(VERSION) && \
 	echo "${GREEN}Restarting tomcat...${RESET}" && \

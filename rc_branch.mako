@@ -5,4 +5,4 @@ export GEODATA_STAGING=${branch_staging}
 export GEOADMINHOST=mf-geoadmin3.${deploy_target}.bgdi.ch
 export HOST=mf-chsdi3.${deploy_target}.bgdi.ch
 
-export PRINT_OUTPUT_BASE=print-chsdi3-mom_print_on_demand.war
+export PRINT_WAR=print-chsdi3-mom_print_on_demand
