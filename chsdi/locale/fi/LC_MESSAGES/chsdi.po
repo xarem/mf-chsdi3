@@ -4025,8 +4025,9 @@ msgstr "ICAO"
 msgid "ch.bazl.gebirgslandeplaetze.name"
 msgstr "Name"
 
+#. TODO
 msgid "ch.bazl.heliports-gebirgslandeplaetze"
-msgstr "Heliports/pl. atterrament muntogna"
+msgstr "ch.bazl.heliports-gebirgslandeplaetze"
 
 msgid "ch.bazl.kataster-belasteter-standorte-zivilflugplaetze"
 msgstr "Lieus contamin. plazzas aviat. civ."
@@ -4103,8 +4104,9 @@ msgstr "Charta d'aviatica OACI"
 msgid "ch.bazl.luftfahrtkarten-icao.release"
 msgstr "Ausgabejahr"
 
+#. TODO
 msgid "ch.bazl.points-of-interest"
-msgstr "Puncts interessants"
+msgstr "ch.bazl.points-of-interest"
 
 msgid "ch.bazl.projektierungszonen-flughafenanlagen"
 msgstr "Zonas projectaziun: eroports"
@@ -4574,6 +4576,9 @@ msgstr "http://www.cadastre.ch/internet/kataster/de/home/services/service/wms/cw
 msgid "ch.kantone.cadastralwebmap-farbe"
 msgstr "CadastralWebMap"
 
+msgid "ch.kantone.cadastralwebmap-farbe.plan"
+msgstr "Plan für das Grundbuch"
+
 msgid "ch.kt"
 msgstr "Kantone"
 
@@ -4803,7 +4808,7 @@ msgid "ch.swisstopo.geologie-generalkarte-ggk200"
 msgstr "Charta geol. generala 200"
 
 msgid "ch.swisstopo.geologie-generalkarte-ggk200.metadata"
-msgstr "Charta geol. generala 200"
+msgstr "Divisiun charta geologica generala 200 Raster"
 
 msgid "ch.swisstopo.geologie-generalkarte-ggk200.metadata.autor"
 msgstr "Autor(en)"

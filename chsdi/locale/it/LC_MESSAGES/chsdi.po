@@ -4025,8 +4025,9 @@ msgstr "ICAO"
 msgid "ch.bazl.gebirgslandeplaetze.name"
 msgstr "Nome"
 
+#. TODO
 msgid "ch.bazl.heliports-gebirgslandeplaetze"
-msgstr "Eliporti/aree d'atterr. in montagna"
+msgstr "ch.bazl.heliports-gebirgslandeplaetze"
 
 msgid "ch.bazl.kataster-belasteter-standorte-zivilflugplaetze"
 msgstr "Siti inquinati aeroporti civili"
@@ -4103,8 +4104,9 @@ msgstr "Carta aeronautica OACI"
 msgid "ch.bazl.luftfahrtkarten-icao.release"
 msgstr "Edizione"
 
+#. TODO
 msgid "ch.bazl.points-of-interest"
-msgstr "Punti d'interesse"
+msgstr "ch.bazl.points-of-interest"
 
 msgid "ch.bazl.projektierungszonen-flughafenanlagen"
 msgstr "Zone riservate: aerodromi"
@@ -4574,6 +4576,9 @@ msgstr "http://www.cadastre.ch/internet/kataster/it/home/services/service/wms/cw
 msgid "ch.kantone.cadastralwebmap-farbe"
 msgstr "CadastralWebMap"
 
+msgid "ch.kantone.cadastralwebmap-farbe.plan"
+msgstr "Piano per il registro"
+
 msgid "ch.kt"
 msgstr "cantone"
 
@@ -4803,7 +4808,7 @@ msgid "ch.swisstopo.geologie-generalkarte-ggk200"
 msgstr "Carta geol. generale 200"
 
 msgid "ch.swisstopo.geologie-generalkarte-ggk200.metadata"
-msgstr "Carta geol. generale 200"
+msgstr "Divisione carta geologica generale 200 Raster"
 
 msgid "ch.swisstopo.geologie-generalkarte-ggk200.metadata.autor"
 msgstr "Autori"
@@ -5256,7 +5261,7 @@ msgid "ch.swisstopo.geologie-rohstoffe-vererzungen.name_ads"
 msgstr "Località"
 
 msgid "ch.swisstopo.geologie-spezialkarten_schweiz.metadata"
-msgstr "Carte geologiche speciali"
+msgstr "Divisione carte geologiche speciali Raster"
 
 msgid "ch.swisstopo.geologie-spezialkarten_schweiz_papier.metadata"
 msgstr "Divisione carte geologiche speciali Stampa"

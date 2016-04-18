@@ -4025,8 +4025,9 @@ msgstr "ICAO"
 msgid "ch.bazl.gebirgslandeplaetze.name"
 msgstr "Name"
 
+#. TODO
 msgid "ch.bazl.heliports-gebirgslandeplaetze"
-msgstr "Heliports/mountain landing sites"
+msgstr "ch.bazl.heliports-gebirgslandeplaetze"
 
 msgid "ch.bazl.kataster-belasteter-standorte-zivilflugplaetze"
 msgstr "Polluted sites civil aerodromes"
@@ -4103,8 +4104,9 @@ msgstr "Aeronautical Chart ICAO"
 msgid "ch.bazl.luftfahrtkarten-icao.release"
 msgstr "Edition"
 
+#. TODO
 msgid "ch.bazl.points-of-interest"
-msgstr "Points of interest"
+msgstr "ch.bazl.points-of-interest"
 
 msgid "ch.bazl.projektierungszonen-flughafenanlagen"
 msgstr "Planning zones: airports"
@@ -4574,6 +4576,9 @@ msgstr "http://www.cadastre.ch/internet/kataster/en/home/services/service/wms/cw
 msgid "ch.kantone.cadastralwebmap-farbe"
 msgstr "CadastralWebMap"
 
+msgid "ch.kantone.cadastralwebmap-farbe.plan"
+msgstr "Plan for land registry"
+
 msgid "ch.kt"
 msgstr "chantun"
 
@@ -4803,7 +4808,7 @@ msgid "ch.swisstopo.geologie-generalkarte-ggk200"
 msgstr "General Geol. Map 200"
 
 msgid "ch.swisstopo.geologie-generalkarte-ggk200.metadata"
-msgstr "General Geol. Map 200"
+msgstr "Division general geological map 200 Raster"
 
 msgid "ch.swisstopo.geologie-generalkarte-ggk200.metadata.autor"
 msgstr "Author(s)"
@@ -5256,7 +5261,7 @@ msgid "ch.swisstopo.geologie-rohstoffe-vererzungen.name_ads"
 msgstr "Site"
 
 msgid "ch.swisstopo.geologie-spezialkarten_schweiz.metadata"
-msgstr "Special Geological Maps"
+msgstr "Division special geological maps Raster"
 
 msgid "ch.swisstopo.geologie-spezialkarten_schweiz_papier.metadata"
 msgstr "Division special geological maps Paper"
