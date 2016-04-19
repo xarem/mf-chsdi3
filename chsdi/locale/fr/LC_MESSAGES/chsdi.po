@@ -4579,6 +4579,9 @@ msgstr "CadastralWebMap"
 msgid "ch.kantone.cadastralwebmap-farbe.plan"
 msgstr "Plan du registre foncier"
 
+msgid "ch.kantone.cadastralwebmap-farbe.wait"
+msgstr "Préparation du plan"
+
 msgid "ch.kt"
 msgstr "cantons"
 
