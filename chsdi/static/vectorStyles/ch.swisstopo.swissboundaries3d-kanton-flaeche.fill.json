@@ -1,0 +1,13 @@
+{
+  "type": "single",
+  "geomType": "polygon",
+  "vectorOptions": {
+    "stroke": {
+      "width": 3,
+      "color": "rgba(204, 153, 255, 1)"
+    },
+    "fill": {
+      "color": "rgba(204, 153, 255, 0)"
+    }
+  }
+}

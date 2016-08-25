@@ -1,0 +1,367 @@
+{
+  "type": "unique",
+  "property": "kanton",
+  "values": [
+    {
+      "geomType": "polygon",
+      "value": "BS",
+      "vectorOptions": {
+        "stroke": {
+          "color": "rgba(255, 255, 255, 0.8)",
+          "width": 2
+        },
+        "fill": {
+          "color": "rgba(255, 0, 0, 0.6)"
+        }
+      }
+    }, {
+      "geomType": "polygon",
+      "value": "NE",
+      "vectorOptions": {
+        "stroke": {
+          "color": "rgba(255, 255, 255, 0.8)",
+          "width": 2
+        },
+        "fill": {
+          "color": "rgba(255, 215, 0, 0.6)"
+        }
+      }
+    }, {
+      "geomType": "polygon",
+      "value": "AI",
+      "vectorOptions": {
+        "stroke": {
+          "color": "rgba(255, 255, 255, 0.8)",
+          "width": 2
+        },
+        "fill": {
+          "color": "rgba(0, 255, 0, 0.6)"
+        }
+      }
+    }, {
+      "geomType": "polygon",
+      "value": "BE",
+      "vectorOptions": {
+        "stroke": {
+          "color": "rgba(255, 255, 255, 0.8)",
+          "width": 2
+        },
+        "fill": {
+          "color": "rgba(75, 0, 130, 0.6)"
+        }
+      }
+    }, {
+      "geomType": "polygon",
+      "value": "IT",
+      "vectorOptions": {
+        "stroke": {
+          "color": "rgba(255, 255, 255, 0.8)",
+          "width": 2
+        },
+        "fill": {
+          "color": "rgba(135, 206, 235, 0.6)"
+        }
+      }
+    }, {
+      "geomType": "polygon",
+      "value": "ZG",
+      "vectorOptions": {
+        "stroke": {
+          "color": "rgba(255, 255, 255, 0.8)",
+          "width": 2
+        },
+        "fill": {
+          "color": "rgba(0, 0, 205, 0.6)"
+        }
+      }
+    }, {
+      "geomType": "polygon",
+      "value": "LU",
+      "vectorOptions": {
+        "stroke": {
+          "color": "rgba(255, 255, 255, 0.8)",
+          "width": 2
+        },
+        "fill": {
+          "color": "rgba(148, 0, 211, 0.6)"
+        }
+      }
+    }, {
+      "geomType": "polygon",
+      "value": "OW",
+      "vectorOptions": {
+        "stroke": {
+          "color": "rgba(255, 255, 255, 0.8)",
+          "width": 2
+        },
+        "fill": {
+          "color": "rgba(255, 192, 203, 0.6)"
+        }
+      }
+    }, {
+      "geomType": "polygon",
+      "value": "LI",
+      "vectorOptions": {
+        "stroke": {
+          "color": "rgba(255, 255, 255, 0.8)",
+          "width": 2
+        },
+        "fill": {
+          "color": "rgba(112, 128, 144, 0.6)"
+        }
+      }
+    }, {
+      "geomType": "polygon",
+      "value": "AG",
+      "vectorOptions": {
+        "stroke": {
+          "color": "rgba(255, 255, 255, 0.8)",
+          "width": 2
+        },
+        "fill": {
+          "color": "rgba(188, 91, 21, 0.6)"
+        }
+      }
+    }, {
+      "geomType": "polygon",
+      "value": "DE",
+      "vectorOptions": {
+        "stroke": {
+          "color": "rgba(255, 255, 255, 0.8)",
+          "width": 2
+        },
+        "fill": {
+          "color": "rgba(192, 192, 192, 0.6)"
+        }
+      }
+    }, {
+      "geomType": "polygon",
+      "value": "TG",
+      "vectorOptions": {
+        "stroke": {
+          "color": "rgba(255, 255, 255, 0.8)",
+          "width": 2
+        },
+        "fill": {
+          "color": "rgba(60, 179, 113, 0.6)"
+        }
+      }
+    }, {
+      "geomType": "polygon",
+      "value": "SG",
+      "vectorOptions": {
+        "stroke": {
+          "color": "rgba(255, 255, 255, 0.8)",
+          "width": 2
+        },
+        "fill": {
+          "color": "rgba(31, 100, 0, 0.6)"
+        }
+      }
+    }, {
+      "geomType": "polygon",
+      "value": "AR",
+      "vectorOptions": {
+        "stroke": {
+          "color": "rgba(255, 255, 255, 0.8)",
+          "width": 2
+        },
+        "fill": {
+          "color": "rgba(70, 130, 180, 0.6)"
+        }
+      }
+    }, {
+      "geomType": "polygon",
+      "value": "GR",
+      "vectorOptions": {
+        "stroke": {
+          "color": "rgba(255, 255, 255, 0.8)",
+          "width": 2
+        },
+        "fill": {
+          "color": "rgba(139, 69, 19, 0.6)"
+        }
+      }
+    }, {
+      "geomType": "polygon",
+      "value": "UR",
+      "vectorOptions": {
+        "stroke": {
+          "color": "rgba(255, 255, 255, 0.8)",
+          "width": 2
+        },
+        "fill": {
+          "color": "rgba(255, 228, 196, 0.6)"
+        }
+      }
+    }, {
+      "geomType": "polygon",
+      "value": "NW",
+      "vectorOptions": {
+        "stroke": {
+          "color": "rgba(255, 255, 255, 0.8)",
+          "width": 2
+        },
+        "fill": {
+          "color": "rgba(65, 105, 225, 0.6)"
+        }
+      }
+    }, {
+      "geomType": "polygon",
+      "value": "GL",
+      "vectorOptions": {
+        "stroke": {
+          "color": "rgba(255, 255, 255, 0.8)",
+          "width": 2
+        },
+        "fill": {
+          "color": "rgba(218, 165, 32, 0.6)"
+        }
+      }
+    }, {
+      "geomType": "polygon",
+      "value": "SO",
+      "vectorOptions": {
+        "stroke": {
+          "color": "rgba(255, 255, 255, 0.8)",
+          "width": 2
+        },
+        "fill": {
+          "color": "rgba(0,255,255,0.6)"
+        }
+      }
+    }, {
+      "geomType": "polygon",
+      "value": "SO",
+      "vectorOptions": {
+        "stroke": {
+          "color": "rgba(255, 255, 255, 0.8)",
+          "width": 2
+        },
+        "fill": {
+          "color": "rgba(0, 255, 255, 0.6)"
+        }
+      }
+    }, {
+      "geomType": "polygon",
+      "value": "BL",
+      "vectorOptions": {
+        "stroke": {
+          "color": "rgba(255, 255, 255, 0.8)",
+          "width": 2
+        },
+        "fill": {
+          "color": "rgba(255, 255, 0, 0.6)"
+        }
+      }
+    }, {
+      "geomType": "polygon",
+      "value": "VS",
+      "vectorOptions": {
+        "stroke": {
+          "color": "rgba(255, 255, 255, 0.8)",
+          "width": 2
+        },
+        "fill": {
+          "color": "rgba(179, 34, 34, 0.6)"
+        }
+      }
+    }, {
+      "geomType": "polygon",
+      "value": "ZH",
+      "vectorOptions": {
+        "stroke": {
+          "color": "rgba(255, 255, 255, 0.8)",
+          "width": 2
+        },
+        "fill": {
+          "color": "rgba(0, 0, 0, 0.6)"
+        }
+      }
+    }, {
+      "geomType": "polygon",
+      "value": "TI",
+      "vectorOptions": {
+        "stroke": {
+          "color": "rgba(255, 255, 255, 0.8)",
+          "width": 2
+        },
+        "fill": {
+          "color": "rgba(255, 10, 21, 0.6)"
+        }
+      }
+    }, {
+      "geomType": "polygon",
+      "value": "VD",
+      "vectorOptions": {
+        "stroke": {
+          "color": "rgba(255, 255, 255, 0.8)",
+          "width": 2
+        },
+        "fill": {
+          "color": "rgba(0, 128, 0, 0.6)"
+        }
+      }
+    }, {
+      "geomType": "polygon",
+      "value": "SZ",
+      "vectorOptions": {
+        "stroke": {
+          "color": "rgba(255, 255, 255, 0.8)",
+          "width": 2
+        },
+        "fill": {
+          "color": "rgba(0, 0, 128, 0.6)"
+        }
+      }
+    }, {
+      "geomType": "polygon",
+      "value": "GE",
+      "vectorOptions": {
+        "stroke": {
+          "color": "rgba(255, 255, 255, 0.8)",
+          "width": 2
+        },
+        "fill": {
+          "color": "rgba(255, 140, 0, 0.6)"
+        }
+      }
+    }, {
+      "geomType": "polygon",
+      "value": "FR",
+      "vectorOptions": {
+        "stroke": {
+          "color": "rgba(255, 255, 255, 0.8)",
+          "width": 2
+        },
+        "fill": {
+          "color": "rgba(255, 99, 71, 0.6)"
+        }
+      }
+    }, {
+      "geomType": "polygon",
+      "value": "SH",
+      "vectorOptions": {
+        "stroke": {
+          "color": "rgba(255, 255, 255, 0.8)",
+          "width": 2
+        },
+        "fill": {
+          "color": "rgba(128, 128, 0, 0.6)"
+        }
+      }
+    }, {
+      "geomType": "polygon",
+      "value": "JU",
+      "vectorOptions": {
+        "stroke": {
+          "color": "rgba(255, 255, 255, 0.8)",
+          "width": 2
+        },
+        "fill": {
+          "color": "rgba(128 ,0 ,0 , 0.6)"
+        }
+      }
+    }
+  ]
+}

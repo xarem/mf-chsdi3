@@ -1,0 +1,55 @@
+{
+  "type": "range",
+  "property": "flaeche",
+  "ranges": [
+    {
+      "geomType": "polygon",
+      "range": [0, 34646.75],
+      "vectorOptions": {
+        "stroke": {
+          "color": "rgba(255, 255, 255, 0.8)",
+          "width": 2
+        },
+        "fill": {
+          "color": "rgba(239, 215, 215, 0.75)"
+        }
+      }
+    }, {
+      "geomType": "polygon",
+      "range": [34646.75, 87320],
+      "vectorOptions": {
+        "stroke": {
+          "color": "rgba(255, 255, 255, 0.8)",
+          "width": 2
+        },
+        "fill": {
+          "color": "rgba(178, 112, 112, 0.75)"
+        }
+      }
+    }, {
+      "geomType": "polygon",
+      "range": [87320, 171456.75],
+      "vectorOptions": {
+        "stroke": {
+          "color": "rgba(255, 255, 255, 0.8)",
+          "width": 2
+        },
+        "fill": {
+          "color": "rgba(96, 31, 31, 0.75)"
+        }
+      }
+    }, {
+      "geomType": "polygon",
+      "range": [171456.75, 710540],
+      "vectorOptions": {
+        "stroke": {
+          "color": "rgba(255, 255, 255, 0.8)",
+          "width": 2
+        },
+        "fill": {
+          "color": "rgba(33 , 3, 3, 0.75)"
+        }
+      }
+    }
+  ]
+}
