@@ -22,6 +22,66 @@ msgstr ""
 msgid "ch.swisstopo.wanderkarte50_papier.metadata"
 msgstr ""
 
+msgid "ch.bafu.karst-einzugsgebiete"
+msgstr ""
+
+msgid "ch.bafu.karst-einzugsgebiete.ba_name"
+msgstr ""
+
+msgid "ch.bafu.karst-einzugsgebiete.ba_surf"
+msgstr ""
+
+msgid "ch.bafu.karst-einzugsgebiete.ba_alt_min"
+msgstr ""
+
+msgid "ch.bafu.karst-einzugsgebiete.ba_alt_moy"
+msgstr ""
+
+msgid "ch.bafu.karst-einzugsgebiete.ba_alt_max"
+msgstr ""
+
+msgid "ch.bafu.karst-einzugsgebietseinheiten"
+msgstr ""
+
+msgid "ch.bafu.karst-einzugsgebietseinheiten.ub_type"
+msgstr ""
+
+msgid "ch.bafu.karst-einzugsgebietseinheiten.ub_flux"
+msgstr ""
+
+msgid "ch.bafu.karst-einzugsgebietseinheiten.shape_area"
+msgstr ""
+
+msgid "ch.bafu.karst-einzugsgebietseinheiten.ub_alt_min"
+msgstr ""
+
+msgid "ch.bafu.karst-einzugsgebietseinheiten.ub_alt_moy"
+msgstr ""
+
+msgid "ch.bafu.karst-einzugsgebietseinheiten.ub_alt_max"
+msgstr ""
+
+msgid "ch.bafu.karst-ausdehnung_grundwasservorkommen"
+msgstr ""
+
+msgid "ch.bafu.karst-ausdehnung_grundwasservorkommen.nk_type"
+msgstr ""
+
+msgid "ch.bafu.karst-ausdehnung_grundwasservorkommen.nk_level"
+msgstr ""
+
+msgid "ch.bafu.karst-ausdehnung_grundwasservorkommen.nk_hdyn"
+msgstr ""
+
+msgid "ch.bafu.karst-unterirdische_fliesswege"
+msgstr ""
+
+msgid "ch.bafu.karst-unterirdische_fliesswege.ei_type"
+msgstr ""
+
+msgid "ch.bafu.karst-unterirdische_fliesswege.ei_hdyn"
+msgstr ""
+
 msgid "ch.bfe.meteorologische-vereisung"
 msgstr ""
 
