@@ -5256,7 +5256,7 @@ msgid "ch.swisstopo.geologie-rohstoffe-vererzungen.name_ads"
 msgstr "Lokalität"
 
 msgid "ch.swisstopo.geologie-spezialkarten_schweiz.metadata"
-msgstr "Geologische Spezialkarten"
+msgstr "Einteilung Geologische Spezialkarten Raster"
 
 msgid "ch.swisstopo.geologie-spezialkarten_schweiz_papier.metadata"
 msgstr "Einteilung Geologische Spezialkarten Papier"

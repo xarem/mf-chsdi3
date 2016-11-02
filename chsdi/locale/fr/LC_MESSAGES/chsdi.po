@@ -5256,7 +5256,7 @@ msgid "ch.swisstopo.geologie-rohstoffe-vererzungen.name_ads"
 msgstr "Localité"
 
 msgid "ch.swisstopo.geologie-spezialkarten_schweiz.metadata"
-msgstr "Cartes géologiques spéciales"
+msgstr "Découpage cartes géologiques spéciales Raster"
 
 msgid "ch.swisstopo.geologie-spezialkarten_schweiz_papier.metadata"
 msgstr "Découpage cartes géologiques spéciales Papier"
@@ -8601,7 +8601,7 @@ msgid "tt_lubis_rotation"
 msgstr "Rotation"
 
 msgid "tt_lubis_schraegaufnahmen_stereo_couple"
-msgstr "Prise de vue cor-réspondente"
+msgstr "Prise de vue correspondante"
 
 msgid "tt_lubis_schraegaufnahmen_x"
 msgstr "Coordonnée centre X"
