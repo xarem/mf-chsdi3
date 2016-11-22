@@ -1331,7 +1331,7 @@ register('ch.bazl.sachplan-infrastruktur-luftfahrt_kraft', SilPlanningRasterK)
 
 
 class NgaAnbieter(Base, Vector):
-    __tablename__ = 'nga_anbieter'
+    __tablename__ = 'nga_anbieter_demo'
     __table_args__ = ({'schema': 'bakom', 'autoload': False})
     __template__ = 'templates/htmlpopup/ngamapping.mako'
     __bodId__ = 'ch.bakom.anbieter-eigenes_festnetz'
