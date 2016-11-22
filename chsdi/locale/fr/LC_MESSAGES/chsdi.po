@@ -4220,9 +4220,6 @@ msgstr "Limite supérieure [type]"
 msgid "ch.bazl.luftraeume-nahkontrollbezirke.upli_value"
 msgstr "Limite supérieure [valeur]"
 
-msgid "ch.bazl.points-of-interest"
-msgstr "Points d'intérêt"
-
 msgid "ch.bazl.projektierungszonen-flughafenanlagen"
 msgstr "Zones réservées: aéroports"
 

@@ -4119,10 +4119,10 @@ msgid "ch.bazl.luftraeume-fluginformationsgebiet.type"
 msgstr "Tipo"
 
 msgid "ch.bazl.luftraeume-fluginformationsgebiet.upli_type"
-msgstr "Limite supérieure [tipo]"
+msgstr "Limite superiore [tipo]"
 
 msgid "ch.bazl.luftraeume-fluginformationsgebiet.upli_value"
-msgstr "Limite supérieure [valore]"
+msgstr "Limite superiore [valore]"
 
 msgid "ch.bazl.luftraeume-fluginformationszonen"
 msgstr "FIZ - Spazi aerei"
@@ -4143,10 +4143,10 @@ msgid "ch.bazl.luftraeume-fluginformationszonen.type"
 msgstr "Tipo"
 
 msgid "ch.bazl.luftraeume-fluginformationszonen.upli_type"
-msgstr "Limite supérieure [tipo]"
+msgstr "Limite superiore [tipo]"
 
 msgid "ch.bazl.luftraeume-fluginformationszonen.upli_value"
-msgstr "Limite supérieure [valore]"
+msgstr "Limite superiore [valore]"
 
 msgid "ch.bazl.luftraeume-kontrollbezirke"
 msgstr "CTA - Spazi aerei"
@@ -4167,10 +4167,10 @@ msgid "ch.bazl.luftraeume-kontrollbezirke.type"
 msgstr "Tipo"
 
 msgid "ch.bazl.luftraeume-kontrollbezirke.upli_type"
-msgstr "Limite supérieure [tipo]"
+msgstr "Limite superiore [tipo]"
 
 msgid "ch.bazl.luftraeume-kontrollbezirke.upli_value"
-msgstr "Limite supérieure [valore]"
+msgstr "Limite superiore [valore]"
 
 msgid "ch.bazl.luftraeume-kontrollzonen"
 msgstr "CTR - Spazi aerei"
@@ -4191,10 +4191,10 @@ msgid "ch.bazl.luftraeume-kontrollzonen.type"
 msgstr "Tipo"
 
 msgid "ch.bazl.luftraeume-kontrollzonen.upli_type"
-msgstr "Limite supérieure [tipo]"
+msgstr "Limite superiore [tipo]"
 
 msgid "ch.bazl.luftraeume-kontrollzonen.upli_value"
-msgstr "Limite supérieure [valore]"
+msgstr "Limite superiore [valore]"
 
 msgid "ch.bazl.luftraeume-nahkontrollbezirke"
 msgstr "TMA - Spazi aerei"
@@ -4215,13 +4215,10 @@ msgid "ch.bazl.luftraeume-nahkontrollbezirke.type"
 msgstr "Tipo"
 
 msgid "ch.bazl.luftraeume-nahkontrollbezirke.upli_type"
-msgstr "Limite supérieure [tipo]"
+msgstr "Limite superiore [tipo]"
 
 msgid "ch.bazl.luftraeume-nahkontrollbezirke.upli_value"
-msgstr "Limite supérieure [valore]"
-
-msgid "ch.bazl.points-of-interest"
-msgstr "Punti d'interesse"
+msgstr "Limite superiore [valore]"
 
 msgid "ch.bazl.projektierungszonen-flughafenanlagen"
 msgstr "Zone riservate: aerodromi"

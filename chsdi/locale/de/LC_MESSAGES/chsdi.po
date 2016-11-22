@@ -4220,9 +4220,6 @@ msgstr "Obergrenze [Typ]"
 msgid "ch.bazl.luftraeume-nahkontrollbezirke.upli_value"
 msgstr "Obergrenze [Wert]"
 
-msgid "ch.bazl.points-of-interest"
-msgstr "Points of Interest"
-
 msgid "ch.bazl.projektierungszonen-flughafenanlagen"
 msgstr "Projektierungszonen: Flughäfen"
 
